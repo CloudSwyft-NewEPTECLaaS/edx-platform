@@ -65,6 +65,11 @@ urlpatterns = patterns(
     url(r'^update_lang/', include('openedx.core.djangoapps.dark_lang.urls', namespace='dark_lang')),
 )
 
+if settings.FEATURES["ENABLE_AZURE_MEDIA_SERVICES_XBLOCK"]:
+    urlpatterns += (
+        url(r'^embed_player/', include('azure_media_services.urls')),
+    )
+
 # restful api
 urlpatterns += patterns(
     'contentstore.views',
